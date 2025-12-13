@@ -16,8 +16,25 @@ build/
 .vite/
 vite.config.ts.timestamp-*
 
-# Environment variables
+# Environment variables (local)
 .env
+.env.local
+.env.*.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
 .env.local
 .env.development
 .env.production
