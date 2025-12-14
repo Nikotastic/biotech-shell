@@ -21,6 +21,7 @@ vite.config.ts.timestamp-*
 .env.local
 .env.*.local
 .env.production
+.env.prod
 
 # IDE
 .vscode/
@@ -61,3 +62,4 @@ coverage/
 
 # Misc
 *.tgz
+.vercel
