@@ -1,20 +1,22 @@
-import { useState } from 'react';
-import { Menu, X, Bell, Search, User, Moon, Sun } from 'lucide-react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Menu, X, Bell, Search, User, Moon, Sun } from "lucide-react";
 
 const Header = ({ toggleSidebar, isSidebarOpen }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle("dark");
   };
 
   const notifications = [
-    { id: 1, text: 'Nuevo análisis completado', time: '5 min' },
-    { id: 2, text: 'Resultados de laboratorio disponibles', time: '1 hora' },
-    { id: 3, text: 'Actualización del sistema', time: '2 horas' },
+    { id: 1, text: "Nuevo análisis completado", time: "5 min" },
+    { id: 2, text: "Resultados de laboratorio disponibles", time: "1 hora" },
+    { id: 3, text: "Actualización del sistema", time: "2 horas" },
   ];
 
   return (
@@ -85,7 +87,9 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
             {showNotifications && (
               <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-biotech-dark rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 animate-fade-in">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">Notificaciones</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                    Notificaciones
+                  </h3>
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {notifications.map((notif) => (
@@ -93,8 +97,12 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
                       key={notif.id}
                       className="p-4 hover:bg-gray-50 dark:hover:bg-biotech-darker transition-colors border-b border-gray-100 dark:border-gray-800 last:border-0"
                     >
-                      <p className="text-sm text-gray-900 dark:text-gray-200">{notif.text}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{notif.time}</p>
+                      <p className="text-sm text-gray-900 dark:text-gray-200">
+                        {notif.text}
+                      </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                        {notif.time}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -119,7 +127,13 @@ const Header = ({ toggleSidebar, isSidebarOpen }) => {
             {showUserMenu && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-biotech-dark rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 animate-fade-in">
                 <div className="p-2">
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-biotech-darker rounded-md transition-colors">
+                  <button
+                    onClick={() => {
+                      navigate("/profile");
+                      setShowUserMenu(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-biotech-darker rounded-md transition-colors"
+                  >
                     Mi Perfil
                   </button>
                   <button className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-biotech-darker rounded-md transition-colors">
