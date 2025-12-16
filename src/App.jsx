@@ -55,6 +55,17 @@ const RemoteDiagnosticHistory = lazy(() =>
 const FeedingPlans = lazy(() => import("feedingMF/FeedingPlan"));
 const FeedingSchedule = lazy(() => import("feedingMF/FeedingSchedule"));
 
+// Reproduction MF Imports
+const RemoteReproductionMonitor = lazy(() =>
+  import("reproductionMF/ReproductionMonitor")
+);
+
+// Commercial/Inventory MF Imports
+// NOTE: Shell config defines remote as "inventoryMF"
+const RemoteCommercialDashboard = lazy(() =>
+  import("inventoryMF/CommercialDashboard")
+);
+
 // Wrappers to inject navigation
 const HealthDashboardWrapper = () => {
   const navigate = useNavigate();
@@ -92,7 +103,7 @@ function App() {
   const { isAuthenticated } = useAuthStore();
   const [authChecked, setAuthChecked] = React.useState(false);
 
-// Check authentication when mounting and when path changes
+  // Check authentication when mounting and when path changes
   React.useEffect(() => {
     // Check if there is authentication data in localStorage
     const authData = localStorage.getItem("auth-storage");
@@ -308,6 +319,42 @@ function App() {
                     fallback={<div className="p-4">Cargando horario...</div>}
                   >
                     <FeedingSchedule />
+                  </Suspense>
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Reproduction Routes */}
+          <Route
+            path="/reproduction"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Suspense
+                    fallback={
+                      <div className="p-4">Cargando reproducción...</div>
+                    }
+                  >
+                    <RemoteReproductionMonitor />
+                  </Suspense>
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Commercial / Inventory Routes */}
+          <Route
+            path="/commercial"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Suspense
+                    fallback={
+                      <div className="p-4">Cargando dashboard comercial...</div>
+                    }
+                  >
+                    <RemoteCommercialDashboard />
                   </Suspense>
                 </Layout>
               </ProtectedRoute>

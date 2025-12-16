@@ -1,58 +1,44 @@
 export const menuItems = [
   {
     id: 1,
-    label: 'Dashboard',
-    iconName: 'Home',
-    path: '/',
+    label: "Dashboard",
+    iconName: "Home",
+    path: "/dashboard",
     badge: null,
   },
   {
     id: 2,
-    label: 'Laboratorio',
-    iconName: 'FlaskConical',
-    path: '/lab',
-    badge: 'Nuevo',
+    label: "Animales",
+    iconName: "Database", // Assuming Database icon for now, or Users could work
+    path: "/animals",
+    badge: null,
   },
   {
     id: 3,
-    label: 'Análisis',
-    iconName: 'BarChart3',
-    path: '/analytics',
+    label: "Salud",
+    iconName: "Shield", // Shield fits health well enough
+    path: "/health",
     badge: null,
   },
   {
     id: 4,
-    label: 'Pacientes',
-    iconName: 'Users',
-    path: '/patients',
-    badge: '3',
+    label: "Alimentación",
+    iconName: "FlaskConical", // Flask could represent mixing feed?
+    path: "/feeding",
+    badge: null,
   },
   {
     id: 5,
-    label: 'Datos',
-    iconName: 'Database',
-    path: '/data',
-    badge: null,
+    label: "Reproducción",
+    iconName: "Users", // Users representing family/repro
+    path: "/reproduction",
+    badge: "Nuevo",
   },
   {
     id: 6,
-    label: 'Reportes',
-    iconName: 'FileText',
-    path: '/reports',
-    badge: null,
-  },
-  {
-    id: 7,
-    label: 'Seguridad',
-    iconName: 'Shield',
-    path: '/security',
-    badge: null,
-  },
-  {
-    id: 8,
-    label: 'Configuración',
-    iconName: 'Settings',
-    path: '/settings',
+    label: "Comercial",
+    iconName: "BarChart3", // BarChart for sales/reports
+    path: "/commercial",
     badge: null,
   },
 ];
