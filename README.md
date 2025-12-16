@@ -1,298 +1,123 @@
-# 🏗️BioTech Shell – Host Application
+# 🧬 BioTech Shell Application
 
-Host application of the BioTech livestock ERP that orchestrates all microfrontends.
+<div align="center">
 
-## 🚀 Features
+  <img src="./public/BioTech.webp" alt="BioTech Logo" width="200" />
+  
+  ![BioTech Shell Banner](https://capsule-render.vercel.app/api?type=waving&color=0ea5e9&height=120&section=header&text=BioTech%20Shell&fontSize=70&animation=fadeIn&fontAlignY=40)
 
-- **MFEs Orchestration**: Manages dynamic loading of all modules
-- **Centralized authentication**: Access control and permissions
-- **Shared layout**: Consistent Header, Sidebar, and Footer
-- **Unified navigation**: Global routing across module
-- **Global Status**: Shared store with Zustand
-- **Error Management**: Error boundaries for each MFE
+  <br />
+
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Module Federation](https://img.shields.io/badge/Module_Federation-0C1C2E?style=for-the-badge&logo=webpack&logoColor=white)](https://webpack.js.org/concepts/module-federation/)
+
+  <br />
+
+  <a href="https://biotech-shell.vercel.app/">
+    <img src="https://img.shields.io/badge/🚀_Live_App-Access_Platform-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+  <a href="https://github.com/Nikotastic/BioTech-Backend">
+    <img src="https://img.shields.io/badge/🔗_Backend_Repo-View_Code-22c55e?style=for-the-badge&logo=github&logoColor=white" alt="Backend Repo" />
+  </a>
 
 </div>
 
-## 🚀 TechStack
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Module Federation](https://img.shields.io/badge/Module%20Federation-1.3.6-FF6B6B?style=for-the-badge)
-![React Router](https://img.shields.io/badge/React%20Router-v6-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
-![Zustand](https://img.shields.io/badge/Zustand-5.0.9-443E38?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.17-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+<br />
 
+## 📋 Overview
 
-## 📦 Installation
+The **BioTech Shell** is the central command center for the BioTech Farm Management platform. Orchestrating a constellation of microfrontends, it delivers a seamless, unified experience for managing every aspect of agricultural operations—from livestock tracking to financial reporting.
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/biotech-shell.git
+---
 
-# Install dependencies
-cd biotech-shell
-npm install
+## 🧩 Microfrontend Ecosystem
 
-# Start in development
-npm run dev
+The Shell integrates these specialized modules into one cohesive application:
 
-# Compile for production
-npm run build
-```
+| Module              | Deployment                                      | Primary Function     |
+| :------------------ | :---------------------------------------------- | :------------------- |
+| **🔐 Auth**         | [Merged App](https://biotech-shell.vercel.app/) | Identity & Security  |
+| **🐮 Animals**      | [Merged App](https://biotech-shell.vercel.app/) | Livestock Registry   |
+| **🌾 Feeding**      | [Merged App](https://biotech-shell.vercel.app/) | Nutrition Management |
+| **🩺 Health**       | [Merged App](https://biotech-shell.vercel.app/) | Veterinary Records   |
+| **🧬 Reproduction** | [Merged App](https://biotech-shell.vercel.app/) | Genetic Lineage      |
+| **💼 Commercial**   | [Merged App](https://biotech-shell.vercel.app/) | Sales & Finance      |
+| **📦 Inventory**    | [Merged App](https://biotech-shell.vercel.app/) | Resource Control     |
 
-## 🌐 Development Ports
+---
 
-- **Shell (Host)**: http://localhost:5000
-- **Auth MF**: http://localhost:5001
-- **Animals MF**: http://localhost:5002
-- **Feeding MF**: http://localhost:5003
-- **Health MF**: http://localhost:5004
-- **Reproduction MF**: http://localhost:5005
-- **Inventory MF**: http://localhost:5006
-- **Commercial MF**: http://localhost:5007
+## 🛠️ Tech Stack & Design
 
-## 📁 Project Structure
+- **Core Engine**: React 19, Vite (Host)
+- **Architecture**: Microfrontends via Module Federation
+- **State Layer**: Zustand (Global Store)
+- **Styling**: TailwindCSS (Premium UI Kit)
+- **Navigation**: React Router DOM (v6)
 
-```
-biotech-shell/
-├── src/
-│ ├── features/
-│ │ ├── layout/ # Layout components
-│ │ ├── navigation/ # Navigation menu
-│ │ └── error-boundary/ # Error handling
-│ ├── shared/
-│ │ ├── store/ # Global state
-│ │ ├── utils/ # Utilities
-│ │ └── constants/ # Constants
-│ ├── router/
-│ │ └── AppRouter.jsx # Route configuration
-│ ├── App.jsx
-│ └── main.jsx
-├── vite.config.js # Vite and MF configuration
-├── tailwind.config.js
-└── package.json
-```
+---
 
-## 🔌 Integrated Microfrontends
-
-### **Exposed by other MFEs:**
-- `authMF/Login` - Login form
-- `animalsMF/AnimalsList` - Animal list
-- `feedingMF/FeedingSchedule` - Feeding schedule
-- `healthMF/HealthRecords` - Health records
-- `reproductionMF/ReproductionCycles` - Reproductive cycles
-- `inventoryMF/InventoryDashboard` - Inventory Dashboard
-- `commercialMF/SalesDashboard` - Sales Dashboard
-
-## 🌍 Environment Variables
-
-### Development (.env.development)
-```send
-VITE_API_GATEWAY_URL=http://localhost:8000/api
-VITE_ENV=development
-```
-
-### Production (.env.production)
-```send
-VITE_API_GATEWAY_URL=https://api.biotech.com/api
-VITE_ENV=production
-```
-
-## 🧩 Module Federation Configuration
-
-The shell is configured as a **Host (Container)** application that dynamically loads all microfrontends as remotes.
-
-### Configuration (vite.config.js)
-```javascript
-federation({
-  name: 'biotech_shell',
-  filename: 'remoteEntry.js',
-  remotes: {
-    authMF: process.env.VITE_AUTH_MF || 'http://localhost:5001/assets/remoteEntry.js',
-    animalsMF: process.env.VITE_ANIMALS_MF || 'http://localhost:5002/assets/remoteEntry.js',
-    feedingMF: process.env.VITE_FEEDING_MF || 'http://localhost:5003/assets/remoteEntry.js',
-    healthMF: process.env.VITE_HEALTH_MF || 'http://localhost:5004/assets/remoteEntry.js',
-    reproductionMF: process.env.VITE_REPRODUCTION_MF || 'http://localhost:5005/assets/remoteEntry.js',
-    inventoryMF: process.env.VITE_INVENTORY_MF || 'http://localhost:5006/assets/remoteEntry.js',
-  },
-  shared: ['react', 'react-dom', 'react-router-dom', 'zustand'],
-})
-```
-
-### Environment-Aware Remotes
-- **Development**: Uses `localhost` with default ports
-- **Production (Vercel)**: Uses environment variables for deployed MFE URLs
-
-## 🎨 Layout Customization
-
-### Header
-```javascript
-// src/features/layout/components/Header.jsx
-// Customize the application header
-```
-
-### Sidebar
-```javascript
-// src/features/layout/components/Sidebar.jsx
-// Modify the navigation menu
-```
-
-### Adding New Modules
-```javascript
-// src/features/navigation/constants/menuItems.js
-export const menuItems = [
-
-{
-path: '/new-module',
-label: 'New Module',
-icon: '🆕',
-module: 'new'
-
-}
-]
-```
-
-## 🚀 Deploy on Vercel
+## 🚀 Getting Started
 
 ### Prerequisites
-- All microfrontends deployed on Vercel (or your hosting platform)
-- Environment variables configured in Vercel project
 
-### Step 1: Deploy via Vercel CLI
-```bash
-# Install Vercel CLI (if not already installed)
-npm install -g vercel
+- Node.js (v18+)
+- npm
 
-# Deploy to production
-vercel --prod
-```
+### Installation
 
-### Step 2: Configure Environment Variables in Vercel
-In your Vercel project dashboard, go to **Settings > Environment Variables** and add:
+1.  **Clone the repository**
 
-```
-VITE_AUTH_MF=https://your-auth-mf.vercel.app/assets/remoteEntry.js
-VITE_ANIMALS_MF=https://your-animals-mf.vercel.app/assets/remoteEntry.js
-VITE_FEEDING_MF=https://your-feeding-mf.vercel.app/assets/remoteEntry.js
-VITE_HEALTH_MF=https://your-health-mf.vercel.app/assets/remoteEntry.js
-VITE_REPRODUCTION_MF=https://your-reproduction-mf.vercel.app/assets/remoteEntry.js
-VITE_INVENTORY_MF=https://your-inventory-mf.vercel.app/assets/remoteEntry.js
-```
+    ```bash
+    git clone https://github.com/Nikotastic/biotech-shell.git
+    cd biotech-shell
+    ```
 
-### Step 3: Vercel Configuration (vercel.json)
-The `vercel.json` file is already configured with:
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "installCommand": "npm ci",
-  "framework": "vite",
-  "env": {
-    "VITE_AUTH_MF": "@auth-mf-url",
-    "VITE_ANIMALS_MF": "@animals-mf-url",
-    "VITE_FEEDING_MF": "@feeding-mf-url",
-    "VITE_HEALTH_MF": "@health-mf-url",
-    "VITE_REPRODUCTION_MF": "@reproduction-mf-url",
-    "VITE_INVENTORY_MF": "@inventory-mf-url"
-  }
-}
-```
+2.  **Install dependencies**
 
-### Step 4: Configure Each Microfrontend for Vercel
+    ```bash
+    npm install
+    ```
 
-Each MFE repository should have a similar structure:
+3.  **Run the application**
+    ```bash
+    npm run dev
+    ```
+    The shell will be available at `http://localhost:5173`.
 
-**vercel.json** (for each MFE):
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "installCommand": "npm ci",
-  "framework": "vite"
-}
-```
+> **Note:** For the full experience, ensure all other microfrontends are running on their respective ports.
 
-**vite.config.js** (example for authMF):
-```javascript
-import federation from '@originjs/vite-plugin-federation'
+---
 
-export default defineConfig({
-  plugins: [
-    react(),
-    federation({
-      name: 'authMF',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Login': './src/components/Login',
-        './AuthProvider': './src/context/AuthProvider',
-      },
-      shared: ['react', 'react-dom', 'react-router-dom', 'zustand'],
-    }),
-  ],
-})
-```
+## 📦 Deployment Configuration
 
-### Step 5: Deploy Other Microfrontends
-1. Deploy each MFE separately to Vercel
-2. Copy the deployment URL for each MFE
-3. Update the Shell's environment variables with the new URLs
-4. Redeploy the Shell (Host)
+This project is deployed on **Vercel** and connects to the BioTech backend.
 
-## 🔐 Authentication
+1.  Push to GitHub.
+2.  Import project into Vercel.
+3.  Configure Remote URLs in Environment Variables.
 
-The shell handles authentication centrally:
+---
 
-```javascript
-// src/shared/store/globalStore.js
-const useGlobalStore = create((set) => ({
-user: null,
-isAuthenticated: false,
-setUser: (user) => set({ user, isAuthenticated: true }),
-logout: () => set({ user: null, isAuthenticated: false })
-}))
-```
+## 🤝 Contributing & Credits
 
-## 📝 Available Scripts
+<div align="center">
 
-```json
-{
-"dev": "vite --port 5000", // Development
-"build": "vite build", // Production
-"preview": "vite preview" // Build preview
-}
-```
+**Core Architecture & Development**<br>
+Built with ❤️ by [**@Nikotastic**](https://github.com/Nikotastic)
 
-## 🐛 Troubleshooting
+  <br>
 
-### Error: "Failed to fetch remote"
-- Verify that all MFEs are running
-- Check the URLs in `vite.config.js`
-- Confirm that the ports are available
+**UX/UI Design & Creative Direction**<br>
+Special thanks to [**@J2rkan**](https://github.com/J2rkan) for the premium design contributions.
 
-### Error: "Module not found"
-- Run `npm install` on all projects
-- Clean up node_modules: `rm -rf node_modules && npm install`
+</div>
 
-### CORS errors
-- Verify the CORS configuration in the API Gateway
-- Check the headers in the requests
+<br>
 
-## 🤝 Contribution
+---
 
-1. Fork the project
-2. Create your branch: `git checkout -b feature/new-feature`
-3. Commit changes: `git commit -m 'Add: new-feature'`
-4. Push: `git push origin feature/new-feature`
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👥 Team
-
-- **RIWI** - Initial Development
-- **BioTech** - Product Owner
-
-
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0ea5e9&height=100&section=footer" width="100%" />
+</div>
