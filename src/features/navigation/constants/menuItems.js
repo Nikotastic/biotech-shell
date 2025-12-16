@@ -13,13 +13,13 @@ export const menuItems = [
     path: "/animals",
     badge: null,
   },
-  {
-    id: 3,
-    label: "Salud",
-    iconName: "Shield", // Shield fits health well enough
-    path: "/health",
-    badge: null,
-  },
+  // {
+  //   id: 3,
+  //   label: "Salud",
+  //   iconName: "Shield", // Shield fits health well enough
+  //   path: "/health",
+  //   badge: null,
+  // },
   // {
   //   id: 4,
   //   label: "Alimentación",
