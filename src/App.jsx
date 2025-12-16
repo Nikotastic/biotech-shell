@@ -189,9 +189,7 @@ function App() {
             path="/farm-selector"
             element={
               <ProtectedRoute>
-                <Layout>
-                  <FarmSelector />
-                </Layout>
+                <FarmSelector />
               </ProtectedRoute>
             }
           />
