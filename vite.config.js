@@ -37,6 +37,9 @@ export default defineConfig(({ mode }) => {
             "http://localhost:5005/assets/remoteEntry.js",
           inventoryMF:
             env.VITE_INVENTORY_MF ||
+            "http://localhost:5007/assets/remoteEntry.js",
+          commercialMF:
+            env.VITE_COMMERCIAL_MF ||
             "http://localhost:5006/assets/remoteEntry.js",
         },
         shared: {
