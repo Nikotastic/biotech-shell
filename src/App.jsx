@@ -18,10 +18,22 @@ import { useAuthStore } from "@shared/store/authStore";
 
 // Component to protect routes
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, token, _hasHydrated } = useAuthStore();
   const location = useLocation();
+  
+  // Wait for hydration before checking authentication
+  if (!_hasHydrated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-biotech-primary"></div>
+      </div>
+    );
+  }
+  
+  // Double check: verify both isAuthenticated flag and token
+  const hasAuth = isAuthenticated && token;
 
-  if (!isAuthenticated) {
+  if (!hasAuth) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
@@ -100,41 +112,10 @@ const DiagnosticHistoryWrapper = () => {
 };
 
 function App() {
-  const { isAuthenticated } = useAuthStore();
-  const [authChecked, setAuthChecked] = React.useState(false);
+  const { isAuthenticated, _hasHydrated } = useAuthStore();
 
-  // Check authentication when mounting and when path changes
-  React.useEffect(() => {
-    // Check if there is authentication data in localStorage
-    const authData = localStorage.getItem("auth-storage");
-    if (authData) {
-      try {
-        const parsed = JSON.parse(authData);
-        // Zustand state should already be synchronized by the persist middleware
-        setAuthChecked(true);
-      } catch (error) {
-        console.error("Error parsing auth data:", error);
-        localStorage.removeItem("auth-storage");
-        setAuthChecked(true);
-      }
-    } else {
-      setAuthChecked(true);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    const handleAuthChange = () => {
-      // Synchronize state without reloading the entire page
-      setAuthChecked(false);
-      setTimeout(() => setAuthChecked(true), 100);
-    };
-
-    window.addEventListener("auth-change", handleAuthChange);
-    return () => window.removeEventListener("auth-change", handleAuthChange);
-  }, []);
-
-  // Wait for authentication to be verified before rendering
-  if (!authChecked) {
+  // Wait for Zustand to hydrate from localStorage before rendering
+  if (!_hasHydrated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-biotech-primary"></div>
