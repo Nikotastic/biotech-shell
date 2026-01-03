@@ -15,12 +15,13 @@ import "./App.css";
 
 import Landing from "@features/layout/components/Landing";
 import { useAuthStore } from "@shared/store/authStore";
+import ApiServiceDemo from "@shared/components/ApiServiceDemo";
 
 // Component to protect routes
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, token, _hasHydrated } = useAuthStore();
   const location = useLocation();
-  
+
   // Wait for hydration before checking authentication
   if (!_hasHydrated) {
     return (
@@ -29,7 +30,7 @@ const ProtectedRoute = ({ children }) => {
       </div>
     );
   }
-  
+
   // Double check: verify both isAuthenticated flag and token
   const hasAuth = isAuthenticated && token;
 
@@ -165,6 +166,9 @@ function App() {
           />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+
+          {/* API Service Demo - Testing Route */}
+          <Route path="/api-test" element={<ApiServiceDemo />} />
 
           <Route
             path="/farm-selector"
